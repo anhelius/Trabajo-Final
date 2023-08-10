@@ -1,0 +1,23 @@
+<h2>Mis Tareas</h2>
+
+<div>
+  <label for="new-tarea">Tarea :  </label>
+  <input id="new-tarea" #tareaTitulo />
+  <input id="new-tarea" #tareaDescripcion />
+  <input id="new-tarea" #tareaHoras />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(tareaTitulo.value,tareaDescripcion.value,tareaHoras.value); tareaTitulo.value='';tareaDescripcion.value='';tareaHoras.value=''">
+    Agregar Tarea
+  </button>
+</div>
+
+<ul class="tareas">
+  <li *ngFor="let tarea of tareas">
+    <a routerLink="/detail/{{tarea.id_tarea}}">
+      <span class="badge">{{tarea.id_tarea}}</span> {{tarea.titulo}}
+    </a>
+    <button type="button" class="delete" title="delete tarea"
+      (click)="delete(tarea)">X</button>
+  </li>
+</ul>
