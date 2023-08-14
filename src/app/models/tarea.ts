@@ -1,6 +1,6 @@
 export interface Tarea {
-    id_tarea: number;
-    titulo: string;
-    descripcion: string;
-    horas: string;
+    tarea_id: number;
+    tarea_cd: string;
+    tarea_de: string;
+    cant_horas: string;
   }

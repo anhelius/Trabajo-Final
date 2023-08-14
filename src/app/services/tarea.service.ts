@@ -12,7 +12,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class TareaService {
 
   private tareasUrl = 'http://localhost:3000/tareas';  // URL de la Tarea
-  private tareasDetailUrl = 'http://localhost:3000/detail';  // URL del detalle
+  private tareasDetailUrl = 'http://localhost:3000/detalle';  // URL del detalle
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -33,24 +33,24 @@ export class TareaService {
 }
 
  /** GET Tarea by id. Return `undefined` when id not found */
- getTareaNo404<Data>(id: number): Observable<Tarea> {
-  const url = `${this.tareasUrl}/?id=${id}`;
+ getTareaNo404<Data>(tarea_id: number): Observable<Tarea> {
+  const url = `${this.tareasUrl}/?id=${tarea_id}`;
   return this.http.get<Tarea[]>(url)
     .pipe(
       map(tareas => tareas[0]), // returns a {0|1} element array
       tap(h => {
         const outcome = h ? 'fetched' : 'did not find';
-        this.log(`${outcome} tarea id=${id}`);
+        this.log(`${outcome} tarea id=${tarea_id}`);
       }),
-      catchError(this.handleError<Tarea>(`getTarea id=${id}`))
+      catchError(this.handleError<Tarea>(`getTarea id=${tarea_id}`))
     );
 }
   /** GET tarea by id. Will 404 if id not found */
-getTarea(id: number): Observable<Tarea> {
-  const url = `${this.tareasDetailUrl}/${id}`;
+getTarea(tarea_id: number): Observable<Tarea> {
+  const url = `${this.tareasDetailUrl}/${tarea_id}`;
   return this.http.get<Tarea>(url).pipe(
-    tap(_ => this.log(`fetched tarea id=${id}`)),
-    catchError(this.handleError<Tarea>(`getTarea id=${id}`))
+    tap(_ => this.log(`fetched tarea id=${tarea_id}`)),
+    catchError(this.handleError<Tarea>(`getTarea id=${tarea_id}`))
   );
 }
 
@@ -74,16 +74,16 @@ searchTareas(term: string): Observable<Tarea[]> {
 addTarea(tarea: Tarea): Observable<Tarea> {
  
   return this.http.post<Tarea>(this.tareasUrl, tarea, this.httpOptions).pipe(
-    tap((newTarea: Tarea) => this.log(`added tarea w/ id=${newTarea.id_tarea}`)),
+    tap((newTarea: Tarea) => this.log(`added tarea w/ id=${newTarea.tarea_id}`)),
     catchError(this.handleError<Tarea>('addTarea'))
   );
 }
 
 /** PUT: update the tarea on the server */
 updateTarea(tarea: Tarea): Observable<any> {
-  const url = `${this.tareasDetailUrl}/${tarea.id_tarea}`;
+  const url = `${this.tareasDetailUrl}/${tarea.tarea_id}`;
   return this.http.put<Tarea>(url, tarea, this.httpOptions).pipe(
-    tap(_ => this.log(`updated tarea id=${tarea.id_tarea}`)),
+    tap(_ => this.log(`updated tarea id=${tarea.tarea_id}`)),
     catchError(this.handleError<any>('updateTarea'))
   );
 }

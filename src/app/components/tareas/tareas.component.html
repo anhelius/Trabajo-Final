@@ -14,8 +14,8 @@
 
 <ul class="tareas">
   <li *ngFor="let tarea of tareas">
-    <a routerLink="/detail/{{tarea.id_tarea}}">
-      <span class="badge">{{tarea.id_tarea}}</span> {{tarea.titulo}}
+    <a routerLink="/detalle/{{tarea.tarea_id}}">
+      <span class="badge">{{tarea.tarea_id}}</span> {{tarea.tarea_cd}}
     </a>
     <button type="button" class="delete" title="delete tarea"
       (click)="delete(tarea)">X</button>

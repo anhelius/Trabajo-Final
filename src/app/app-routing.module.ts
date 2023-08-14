@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'tareas', component: TareasComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'detail/:id', component: TareaDetailComponent },
+  { path: 'detalle/:tarea_id', component: TareaDetailComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

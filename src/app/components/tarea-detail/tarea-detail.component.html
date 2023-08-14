@@ -1,17 +1,17 @@
 <div *ngIf="tarea">
-    <h2>{{tarea.titulo | uppercase}} Detalle</h2>
-    <div><span>id: </span>{{tarea.id_tarea}}</div>
+    <h2>{{tarea.tarea_cd | uppercase}} Detalle</h2>
+    <div><span>id: </span>{{tarea.tarea_id}}</div>
     <div>
       <label for="tarea-titulo"> Tarea : </label>
-      <input id="tarea-titulo" [(ngModel)]="tarea.titulo" placeholder="Tarea Titulo"/>
+      <input id="tarea-titulo" [(ngModel)]="tarea.tarea_cd" placeholder="Tarea Titulo"/>
     </div>
     <div>
       <label for="tarea-descripcion"> Descripcion : </label>
-      <input id="tarea-descripcion" [(ngModel)]="tarea.descripcion" placeholder="Tarea Descripcion"/>
+      <input id="tarea-descripcion" [(ngModel)]="tarea.tarea_de" placeholder="Tarea Descripcion"/>
     </div>
     <div>
       <label for="tarea-horas"> Horas : </label>
-      <input id="tarea-horas" [(ngModel)]="tarea.horas" placeholder="Tarea Horas"/>
+      <input id="tarea-horas" [(ngModel)]="tarea.cant_horas" placeholder="Tarea Horas"/>
     </div>
     <button type="button" (click)="goBack()">Volver</button>
     <button type="button" (click)="save()">Guardar</button>

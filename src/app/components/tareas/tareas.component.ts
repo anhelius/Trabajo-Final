@@ -23,12 +23,12 @@ export class TareasComponent implements OnInit {
           .subscribe(tareas => this.tareas = tareas);
     }
 
-    add(titulo: string,descripcion: string, horas: string): void {
-      titulo = titulo.trim();
-      descripcion = descripcion.trim();
-      horas = horas.trim();
-      if (!titulo) { return; }
-      this.tareaService.addTarea({ titulo,descripcion,horas } as Tarea)
+    add(tarea_cd: string,tarea_de: string, cant_horas: string): void {
+      tarea_cd = tarea_cd.trim();
+      tarea_de = tarea_de.trim();
+      cant_horas = cant_horas.trim();
+      if (!tarea_cd) { return; }
+      this.tareaService.addTarea({ tarea_cd,tarea_de,cant_horas } as Tarea)
         .subscribe(tarea => {
           this.tareas.push(tarea);
         });
@@ -37,7 +37,7 @@ export class TareasComponent implements OnInit {
 
     delete(tarea: Tarea): void {
       this.tareas = this.tareas.filter(h => h !== tarea);
-      this.tareaService.deleteTarea(tarea.id_tarea).subscribe();
+      this.tareaService.deleteTarea(tarea.tarea_id).subscribe();
     }
 
 }
