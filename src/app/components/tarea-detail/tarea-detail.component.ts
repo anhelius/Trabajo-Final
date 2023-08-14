@@ -24,7 +24,7 @@ export class TareaDetailComponent implements OnInit {
   }
   
   getTarea(): void {
-    const id = Number(this.route.snapshot.paramMap.get('tarea_id'));
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.tareaService.getTarea(id)
       .subscribe(tarea => this.tarea = tarea);
   }

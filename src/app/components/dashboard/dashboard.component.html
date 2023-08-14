@@ -1,7 +1,7 @@
 <h2>Top Tareas</h2>
 <div class="tareas-menu">
   <a *ngFor="let tarea of tareas"
-    routerLink="/detalle/{{tarea.tarea_id}}">
+    routerLink="/tareas-detalle/{{tarea.id}}">
     {{tarea.tarea_cd}}
   </a>
 </div>

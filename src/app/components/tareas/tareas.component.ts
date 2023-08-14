@@ -37,7 +37,7 @@ export class TareasComponent implements OnInit {
 
     delete(tarea: Tarea): void {
       this.tareas = this.tareas.filter(h => h !== tarea);
-      this.tareaService.deleteTarea(tarea.tarea_id).subscribe();
+      this.tareaService.deleteTarea(tarea.id).subscribe();
     }
 
 }

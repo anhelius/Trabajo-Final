@@ -1,6 +1,6 @@
 <div *ngIf="tarea">
     <h2>{{tarea.tarea_cd | uppercase}} Detalle</h2>
-    <div><span>id: </span>{{tarea.tarea_id}}</div>
+    <div><span>id: </span>{{tarea.id}}</div>
     <div>
       <label for="tarea-titulo"> Tarea : </label>
       <input id="tarea-titulo" [(ngModel)]="tarea.tarea_cd" placeholder="Tarea Titulo"/>
